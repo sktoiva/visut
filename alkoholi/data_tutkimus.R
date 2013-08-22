@@ -1,4 +1,4 @@
-miehet <- read.csv("naiset.csv", sep="\t")
+miehet <- read.csv("miehet.csv", sep="\t")
 naiset <- read.csv("naiset.csv", sep="\t")
 alkoholi <- read.csv("alkoholin_kulutus.csv", sep=";")
 
