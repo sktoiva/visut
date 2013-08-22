@@ -24,7 +24,12 @@ ggplot(jakauma_ika, aes( x = Vuosi, y = suhde, color = sukupuoli, group=sukupuol
 #Nimetään yksinkertaisemmiksi alkoholi -dataframen kolumnit
 names(alkoholi) <- c("Vuosi", "Tilastoitu", "Tilastoimaton", "Kokonais")
 
+#Mergataan, huom. ilman optioita mergataan vain rivit jotka löytyy molemmista (nyt "Vuosi"
+# on yhteinen kolumni)
 alkoholi_jakaumat <- merge(alkoholi, jakauma_ika)
 
-ggplot(alkoholi_jakaumat, aes(x = Vuosi, y = Kokonais*suhde, color = sukupuoli, group = sukupuoli)) +
-  geom_line()
+#Aiemmin suhde = aikuiset / kaikki. Raportoitu alkoholin kulutus on alkoholi / kaikki
+#Haluamme alkoholi/aikuiset, joten alkoholi/kaikki / suhde  on oikea tapa laskea tämä
+ggplot(alkoholi_jakaumat, aes(x = Vuosi, y = Kokonais/suhde, color = sukupuoli, group = sukupuoli)) +
+  geom_line() +
+  theme_bw()
