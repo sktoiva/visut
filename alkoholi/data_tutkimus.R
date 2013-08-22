@@ -18,7 +18,7 @@ jakauma_ika$aikuiset <- jakauma_ika$Ikaluokat.yhteensa - jakauma_ika$nuoret
 jakauma_ika$suhde <- jakauma_ika$aikuiset/jakauma_ika$Ikaluokat.yhteensa
 
 #Piirretään kuvaaja aiheesta ggplot2:lla
-ggplot(jakauma_ika, aes( x = Vuosi., y = suhde, color = sukupuoli, group=sukupuoli)) +
+ggplot(jakauma_ika, aes( x = Vuosi, y = suhde, color = sukupuoli, group=sukupuoli)) +
   geom_line()
 
 
