@@ -21,4 +21,10 @@ jakauma_ika$suhde <- jakauma_ika$aikuiset/jakauma_ika$Ikaluokat.yhteensa
 ggplot(jakauma_ika, aes( x = Vuosi, y = suhde, color = sukupuoli, group=sukupuoli)) +
   geom_line()
 
+#Nimetään yksinkertaisemmiksi alkoholi -dataframen kolumnit
+names(alkoholi) <- c("Vuosi", "Tilastoitu", "Tilastoimaton", "Kokonais")
 
+alkoholi_jakaumat <- merge(alkoholi, jakauma_ika)
+
+ggplot(alkoholi_jakaumat, aes(x = Vuosi, y = Kokonais*suhde, color = sukupuoli, group = sukupuoli)) +
+  geom_line()
