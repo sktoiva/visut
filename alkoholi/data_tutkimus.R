@@ -1,6 +1,7 @@
 #Ladataan ggplot-plotteja varten ja reshape, plyr muokkausta varten
 library(ggplot2)
 library(reshape)
+library(plyr)
 
 miehet <- read.csv("miehet.csv", sep="\t")
 naiset <- read.csv("naiset.csv", sep="\t")
