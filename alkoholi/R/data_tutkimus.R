@@ -3,9 +3,9 @@ library(ggplot2)
 library(reshape)
 library(plyr)
 
-miehet <- read.csv("miehet.csv", sep="\t")
-naiset <- read.csv("naiset.csv", sep="\t")
-alkoholi <- read.csv("alkoholin_kulutus.csv", sep=";")
+miehet <- read.csv("../data/miehet.csv", sep="\t")
+naiset <- read.csv("../data/naiset.csv", sep="\t")
+alkoholi <- read.csv("../data/alkoholin_kulutus.csv", sep=";")
 
 #Lisätään sukupuoli ja yhdistetään dataframet
 naiset$sukupuoli <- "Nainen"
