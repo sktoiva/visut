@@ -1,79 +1,101 @@
-d3.tsv("../data/jakauma.tsv", function(data) {
+var config = {
+    width: 640,
+    height: 340
+};
 
-  var width = 1960,
-    height = 1500;
-
-  var nest = d3.nest()
+var AlcoholViz = {
+  nest: function(data){
+    return  d3.nest()
     .key(function(d) {
       return d.min_ika;
     })
-    .sortKeys(d3.descending)
+    .sortKeys(d3.ascending)
     .entries(data);
+  },
 
-  console.log(nest);
-
-  var layers = nest.map(function(d) {
+  initData: function(element) {
     return {
-      "key": d.key,
-      "values": d.values.map(function(ageGroup, i) {
+      "key": element.key,
+      "values": element.values.map(function(ageGroup) {
         return {
-          "x": i,
+          "x": ageGroup.Vuosi,
           "y": ageGroup.ikaluokka,
-          "y0": 0
         };
       })
     };
-  });
+  },
 
-  console.log(layers);
+  stack: function() {
+    return d3.layout.stack()
+                .offset("silhouette")
+                .values(function(d) {
+                  return d.values;
+                });
+  },
 
-  var stack = d3.layout.stack()
-    .offset("wiggle")
-    .values(function(d) {
-      return d.values;
-    });
+  svg: function() {
+    return d3.select("body")
+              .append("svg")
+              .attr("width", config.width)
+              .attr("height", config.height);
+  },
 
-  var svg = d3.select("body")
-    .append("svg")
-    .attr("width", width)
-    .attr("height", height);
+  xScale: function(){
+    return d3.scale.linear().domain([1865, 2012]).range([0, config.width]);
+  },
 
-  var xScale = d3.scale.linear().range([0, width]);
-  var yScale = d3.scale.linear()
-    .domain(
-      [
-        d3.min(data, function(d) {
-          return d.ikaluokka;
-        }),
-        d3.max(data, function(d) {
-          return d.ikaluokka;
-        })
-      ]
-    )
-    .range([height, 0]);
+  yScale: function(data){
+    //console.log(data);
+    var min = 0;//d3.min(data, function(d) { return d.ikaluokka; });
+    var max = 500000;//d3.max(data, function(d) { return d.values;});
 
-  var area = d3.svg.area()
+    console.log("Min: " + min);
+    console.log("Max: " + max);
+
+    return d3.scale.linear()
+             .domain([max,min])
+             .range([0, config.height]);
+  },
+
+  area: function(xScale, yScale){
+   return d3.svg.area()
     .x(function(d) {
       return xScale(d.x);
     })
-    .y0(height)
+    .y0(config.height)
     .y1(function(d) {
       return yScale(d.y);
     });
+  },
 
-var color = d3.scale.linear()
-     .range(["#aad", "#556"]);
+  color: function(){
+    return d3.scale.linear().range(["#aad", "#556"]);
+  }
+};
+
+d3.tsv("../data/jakauma.tsv", function(data) {
+  var stack = AlcoholViz.stack();
+  var nest = AlcoholViz.nest(data);
+  var layers = stack(nest.map(AlcoholViz.initData));
+
+  var xScale = AlcoholViz.xScale();
+  var yScale = AlcoholViz.yScale(nest);
+  var area = AlcoholViz.area(xScale, yScale);
+  var color = AlcoholViz.color();
+  var svg = AlcoholViz.svg();
 
   svg.selectAll("path")
-    .data(stack(layers))
+    .data(layers)
     .enter().append("path")
     .attr("d", function(d) {
       return area(d.values);
     })
     .style("fill", function() { return color(Math.random()); })
     .append("title").text(function(d){
-      return d.key;
+      end = parseInt(d.key,0) + 4;
+      return d.key + " - " + end;
     });
    
 });
+
 
