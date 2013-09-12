@@ -45,16 +45,13 @@ var AlcoholViz = {
   },
 
   yScale: function(data){
-    //console.log(data);
-    var min = 0;//d3.min(data, function(d) { return d.ikaluokka; });
-    var max = 500000;//d3.max(data, function(d) { return d.values;});
-
-    console.log("Min: " + min);
-    console.log("Max: " + max);
+    var values = d3.merge(data.map(function(d){return d.values;}));
+    var min = d3.min(values, function(d) { return parseInt(d.ikaluokka,10); });
+    var max = d3.max(values, function(d) { return parseInt(d.ikaluokka,10); });
 
     return d3.scale.linear()
-             .domain([max,min])
-             .range([0, config.height]);
+             .domain([min, max])
+             .range([config.height, 0]);
   },
 
   area: function(xScale, yScale){
