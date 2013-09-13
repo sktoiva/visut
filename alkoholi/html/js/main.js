@@ -1,6 +1,7 @@
 var config = {
     width: 1000,
-    height: 500
+    height: 500,
+    padding: 20
 };
 
 var AlcoholViz = {
@@ -46,7 +47,8 @@ var AlcoholViz = {
   },
 
   xScale: function(){
-    return d3.scale.linear().domain([1865, 2012]).range([0, config.width]);
+    //return d3.scale.linear().domain([1865, 2012]).range([0, config.width]);
+    return d3.time.scale().domain([new Date('1865'), new Date('2012')]).range([0, config.width]);
   },
 
   yScale: function(layers){
@@ -56,13 +58,13 @@ var AlcoholViz = {
 
     return d3.scale.linear()
              .domain([min, max])
-             .range([config.height, 0]);
+             .range([config.height-config.padding, 0]);
   },
 
   area: function(xScale, yScale){
    return d3.svg.area()
     .x(function(d) {
-      return xScale(d.x);
+      return xScale(new Date("" + d.x));
     })
     .y0(function(d) {
       return yScale(d.y0);
@@ -107,6 +109,12 @@ d3.tsv("../data/jakauma.tsv", function(data) {
       return d.key;
     });
    
+  var xAxis = d3.svg.axis().scale(xScale).tickSize(-config.height);
+
+  svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(0," + (config.height-config.padding) + ")")
+    .call(xAxis);
 });
 
 
