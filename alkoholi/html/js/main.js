@@ -7,9 +7,14 @@ var AlcoholViz = {
   nest: function(data){
     return  d3.nest()
     .key(function(d) {
-      return d.min_ika;
+      return d.min_ika + " - " + d.max_ika;
     })
-    .sortKeys(d3.ascending)
+    .sortKeys(function(a, b) {
+        var aVal = parseInt(a.split(' ')[0], 10);
+        var bVal = parseInt(b.split(' ')[0], 10);
+
+        return aVal < bVal ? -1 : aVal > bVal ? 1 : 0;
+     })
     .entries(data);
   },
 
@@ -67,15 +72,24 @@ var AlcoholViz = {
     });
   },
 
+  colorIndex: 0,
+
+  incrementColorIndex: function(){
+    this.colorIndex += 1;
+    return this.colorIndex;
+  },
+
   color: function(){
-    return d3.scale.linear().range(["#aad", "#556"]);
+    return d3.scale.linear().range(["#aad", "#556"]).domain([0, 89]);
   }
 };
 
 d3.tsv("../data/jakauma.tsv", function(data) {
   var stack = AlcoholViz.stack();
   var nest = AlcoholViz.nest(data);
+  console.log(nest);
   var layers = stack(nest.map(AlcoholViz.initData));
+  console.log(layers);
   var xScale = AlcoholViz.xScale();
   var yScale = AlcoholViz.yScale(layers);
   var area = AlcoholViz.area(xScale, yScale);
@@ -88,10 +102,9 @@ d3.tsv("../data/jakauma.tsv", function(data) {
     .attr("d", function(d) {
       return area(d.values);
     })
-    .style("fill", function() { return color(Math.random()); })
+    .style("fill", function(d) { return color(d.key.split(' ')[0]); })
     .append("title").text(function(d){
-      end = parseInt(d.key,0) + 4;
-      return d.key + " - " + end;
+      return d.key;
     });
    
 });
