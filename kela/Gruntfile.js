@@ -58,6 +58,7 @@ module.exports = function(grunt) {
       },
     },
     watch: {
+      files: ['!**/node_modules/**', '!**/bower_components/**', '!.gitignore', '!.git'],
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
