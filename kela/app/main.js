@@ -1,7 +1,7 @@
 // to depend on a bower installed component:
 // define(['bower_components/componentName/file'])
 
-define(["jquery", "d3"], function($, d3) {
+define(["jquery", "d3", "datepicker"], function($, d3) {
   var timeline = function(){
     
     var w = 2500;
@@ -26,6 +26,12 @@ define(["jquery", "d3"], function($, d3) {
        .attr("transform", "translate(0," + (h - padding) + ")")
        .call(xAxis);
   };
+
+  // var attachListeners = function(){
+  //   $("#calculated_time").asEventStream
+  // };
+
+  // attachListeners();
 
   timeline();
 });

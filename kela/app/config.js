@@ -10,7 +10,10 @@ require.config({
   paths: {
     "components": "../bower_components",
     "jquery": "../bower_components/jquery/jquery",
-    "d3": "//d3js.org/d3.v3.min"
+    "bacon": "../bower_components/bacon/bacon",
+    "d3": "//d3js.org/d3.v3.min",
+    "bootstrap-datepicker": "../bower_components/bootstrap-datepicker/js/bootstrap-datepicker",
+    "bootstrap-datepicker-fi": "../bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.fi"
   }
 });
 

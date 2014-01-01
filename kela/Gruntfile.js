@@ -72,10 +72,14 @@ module.exports = function(grunt) {
         tasks: ['jshint:test', 'qunit']
       },
       livereload: {
-        files: ['<%= jshint.app.src %>', 'index.htm'],
+        files: ['<%= jshint.app.src %>', 'index.htm', '*.css'],
         options: {
           livereload: true
         }
+      },
+      html: {
+        files: 'index.htm',
+        tasks: ['validation']
       }
     },
     requirejs: {
@@ -111,7 +115,17 @@ module.exports = function(grunt) {
           }
         }
       }
-    }
+    },
+    validation: {
+      options: {
+        reset: grunt.option('reset') || false,
+        stoponerror: false,
+        relaxerror: ["Bad value X-UA-Compatible for attribute http-equiv on element meta."] //ignores these errors
+      },
+      files: {
+        src: ['index.htm']
+      }
+    },
   });
 
   // These plugins provide necessary tasks.
@@ -123,10 +137,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-html-validation');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'requirejs', 'concat', 'uglify']);
-  grunt.registerTask('preview-and-watch', ['connect:development','watch']);
+  grunt.registerTask('preview-and-watch', ['connect:development', 'watch']);
   grunt.registerTask('preview-live', ['default', 'connect:production']);
 
 };

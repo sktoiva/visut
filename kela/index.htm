@@ -1,15 +1,19 @@
-<!Doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="fi">
 <head>
   <meta charset="utf-8">
   <title>Kela Timeline</title>
   <script data-main="app/config" src="bower_components/requirejs/require.js"></script>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <form>
-        <label for="calculated-time">Laskettu aika</label> <input type="date" id="calculated-time">
+    <div class="container">
+    <form class="inline">
+        <label for="calculated-time">Laskettu aika</label>
+        <input class="datepicker" id="calculated-time" placeholder="pp.kk.vvvv">
     </form>
     <div id="timeline"></div>
+    </div>
 </body>
 </html>
