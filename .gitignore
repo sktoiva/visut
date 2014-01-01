@@ -2,3 +2,5 @@ node_modules/
 bower_components/
 temp/
 dist/
+validation-report.json
+validation-status.json
