@@ -1,6 +1,6 @@
 {
   "name": "moment-holiday-fi",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "authors": [
     "Sampo Toiva <sampo.toiva@gmail.com>"
   ],
@@ -25,13 +25,14 @@
     "momentjs": "~2.5.0"
   },
   "homepage": "https://github.com/sktoiva/moment-holiday-fi",
-  "_release": "0.2.1",
+  "_release": "0.3.0",
   "_resolution": {
     "type": "version",
-    "tag": "0.2.1",
-    "commit": "725e4a586b202e691d8b882c072bc72efac7f6be"
+    "tag": "0.3.0",
+    "commit": "140162566f532ea9dc5695865a6ea5788d4f178e"
   },
   "_source": "git://github.com/sktoiva/moment-holiday-fi.git",
-  "_target": "~0.2.0",
-  "_originalSource": "moment-holiday-fi"
+  "_target": "~0.3.0",
+  "_originalSource": "moment-holiday-fi",
+  "_direct": true
 }

@@ -71,6 +71,10 @@ describe "Bacon._", ->
     it "should, when given an array, return it back (not a copy)", ->
       arr = []
       expect(_.toArray(arr)).to.equal(arr)
+  describe "indexOf", ->
+    expect(_.indexOf([1,2], 1)).to.equal(0)
+    expect(_.indexOf([1,2], 2)).to.equal(1)
+    expect(_.indexOf([1,2], 3)).to.equal(-1)
   describe "contains", ->
     expect(_.contains("abc", "c")).to.be.true
     expect(_.contains("abc", "x")).to.be.false
@@ -665,6 +669,18 @@ describe "EventStream.flatMap", ->
     expectStreamEvents(
       -> Bacon.once("asdf").flatMap(Bacon.once("bacon"))
       ["bacon"])
+  describe "Respects function construction rules", ->
+    expectStreamEvents(
+      -> Bacon.once({ bacon: Bacon.once("sir francis")}).flatMap(".bacon")
+      ["sir francis"])
+    expectStreamEvents(
+      -> Bacon.once({ bacon: "sir francis"}).flatMap(".bacon")
+      ["sir francis"])
+    expectStreamEvents(
+      ->
+        glorify = (x, y) -> Bacon.fromArray([x, y])
+        Bacon.once("francis").flatMap(glorify, "sir")
+      ["sir", "francis"])
   it "toString", ->
     expect(Bacon.never().flatMap(->).toString()).to.equal("Bacon.never().flatMap(function)")
 
@@ -701,6 +717,13 @@ describe "EventStream.flatMapLatest", ->
     expectStreamEvents(
       -> Bacon.once("asdf").flatMapLatest(Bacon.constant("bacon"))
       ["bacon"], unstable)
+  describe "Accepts a field extractor string instead of function", ->
+    expectStreamEvents(
+      -> Bacon.once({ bacon: Bacon.once("sir francis")}).flatMapLatest(".bacon")
+      ["sir francis"])
+    expectStreamEvents(
+      -> Bacon.once({ bacon: "sir francis"}).flatMapLatest(".bacon")
+      ["sir francis"])
   it "toString", ->
     expect(Bacon.never().flatMapLatest(->).toString()).to.equal("Bacon.never().flatMapLatest(function)")
 
@@ -723,6 +746,13 @@ describe "EventStream.flatMapFirst", ->
       -> series(2, [2, 4, 6, 8]).flatMapFirst (value) ->
         series(1, ["a" + value, "b" + value, "c" + value])
       ["a2", "b2", "c2", "a6", "b6", "c6"], unstable)
+  describe "Accepts a field extractor string instead of function", ->
+    expectStreamEvents(
+      -> Bacon.once({ bacon: Bacon.once("sir francis")}).flatMapFirst(".bacon")
+      ["sir francis"])
+    expectStreamEvents(
+      -> Bacon.once({ bacon: "sir francis"}).flatMapFirst(".bacon")
+      ["sir francis"])
   it "toString", ->
     expect(Bacon.never().flatMapFirst(->).toString()).to.equal("Bacon.never().flatMapFirst(function)")
 

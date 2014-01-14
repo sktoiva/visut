@@ -7,6 +7,8 @@
     "bootstrap": "~3.0.3",
     "bootstrap-datepicker": "1.3.0-rc.5",
     "momentjs": "~2.5.0",
-    "bootstrap-daterangepicker": "*"
+    "bootstrap-daterangepicker": "*",
+    "bacon": "~0.7.1",
+    "moment-holiday-fi": "~0.3.0"
   }
 }

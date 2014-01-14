@@ -72,7 +72,7 @@
 
     /**
     /*  @param year The year for which the Easter sunday is calculated
-    /*  @return easter sunday json: {day: <dayofmonth>, month: <month>}
+    /*  @return easter sunday json: {day: <day_of_month>, month: <month>}
     **/ 
     var easterSunday = function(year) {
         var a = Math.floor(year % 19),
@@ -95,14 +95,14 @@
 
 
     var easterRelatedDays = function(moment) {
-        var easterSunday = easterSunday(moment.year()),
-            goodFriday = easterSunday.clone().subtract("days", 2),
-            easterMonday = easterSunday.clone().add("days", 1),
-            ascension = easterSunday.clone().add("days", 39);
+        var easter = easterSunday(moment.year()),
+            goodFriday = easter.clone().subtract("days", 2),
+            easterMonday = easter.clone().add("days", 1),
+            ascension = easter.clone().add("days", 39);
 
         if(moment.isSame(goodFriday)){
             return 'Pitkäperjantai';
-        }else if(moment.isSame(easterSunday)){
+        }else if(moment.isSame(easter)){
             return 'Pääsiäispäivä';
         }else if(moment.isSame(easterMonday)){
             return 'Toinen pääsiäispäivä';
