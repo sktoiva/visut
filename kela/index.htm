@@ -9,11 +9,28 @@
 </head>
 <body>
     <div class="container">
-    <form class="inline">
-        <label for="calculated-time">Laskettu aika</label>
-        <input class="datepicker" id="calculated-time" placeholder="pp.kk.vvvv">
-    </form>
-    <div id="timeline"></div>
+    <div class="row">
+      
+      <div class="col-md-4">
+        <form class="inline">
+            <label for="calculated-time">Laskettu aika</label>
+            <input class="datepicker" id="calculated-time" placeholder="pp.kk.vvvv">
+        </form>
+      </div>
+
+      <div class="col-md-8">
+        <ul>
+          <li id="maternity-leave">Äitiysloma</li>
+          <li id="paternity-leave">Isyysloma</li>
+          <li id="father-month">Isäkuukausi</li>
+          <li id="childcare-leave">Hoitovapaa</li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="row">
+      <div id="timeline"></div>
+    </div>
     </div>
 </body>
 </html>
