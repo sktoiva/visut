@@ -1,0 +1,36 @@
+{
+  "name": "moment-holiday-fi",
+  "version": "0.2.0",
+  "authors": [
+    "Sampo Toiva <sampo.toiva@gmail.com>"
+  ],
+  "description": "A momentjs plugin for displaying Finnish holidays.",
+  "main": "src/holiday-fi.js",
+  "keywords": [
+    "momentjs",
+    "holiday",
+    "finnish"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "momentjs": "~2.5.0"
+  },
+  "homepage": "https://github.com/sktoiva/moment-holiday-fi",
+  "_release": "0.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.2.0",
+    "commit": "ae7bf69a60d7d3635e8f293de31107bd201c322d"
+  },
+  "_source": "git://github.com/sktoiva/moment-holiday-fi.git",
+  "_target": "~0.2.0",
+  "_originalSource": "moment-holiday-js",
+  "_direct": true
+}

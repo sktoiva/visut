@@ -1,0 +1,32 @@
+{
+  "name": "holiday-fi",
+  "version": "0.2.0",
+  "author": {
+    "name": "Sampo Toiva",
+    "email": "sampo.toiva@gmail.com"
+  },
+  "licenses": [
+    "MIT"
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-jshint": "~0.8.0",
+    "mocha": "~1.16.2",
+    "chai": "~1.8.1",
+    "underscore": "~1.5.2",
+    "grunt-mocha-test": "~0.8.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "homepage": "",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "main": "src/holiday-fi.js",
+  "dependencies": {
+    "moment": "~2.5.0"
+  }
+}
