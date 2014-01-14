@@ -1,0 +1,4 @@
+temp/
+dist/
+validation-report.json
+validation-status.json

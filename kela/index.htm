@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <title>Kela Timeline</title>
+  <script data-main="app/config" src="bower_components/requirejs/require.js"></script>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="container">
+    <div class="row">
+      
+      <div class="col-md-4">
+        <form class="inline">
+            <label for="calculated-time">Laskettu aika</label>
+            <input class="datepicker" id="calculated-time" placeholder="pp.kk.vvvv">
+        </form>
+      </div>
+
+      <div class="col-md-8">
+        <ul>
+          <li id="maternity-leave">Äitiysloma</li>
+          <li id="paternity-leave">Isyysloma</li>
+          <li id="father-month">Isäkuukausi</li>
+          <li id="childcare-leave">Hoitovapaa</li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="row">
+      <div id="timeline"></div>
+    </div>
+    </div>
+</body>
+</html>
