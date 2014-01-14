@@ -28,7 +28,7 @@ require.config({
     "bootstrap-datepicker": "../bower_components/bootstrap-datepicker/js/bootstrap-datepicker",
     "bootstrap-datepicker-fi": "../bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.fi",
     "moment": "../bower_components/momentjs/min/moment-with-langs.min",
-    "holidays-fi": "../bower_components/moment-holiday-fi/src/moment-holiday-fi"
+    "holiday-fi": "../bower_components/moment-holiday-fi/src/moment-holiday-fi"
   }
 });
 

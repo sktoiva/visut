@@ -1,6 +1,6 @@
 define(['jquery',
         'moment',
-        'holidays-fi',
+        'holiday-fi',
         'timeline',
         'bootstrap',
         'bootstrap-datepicker',
