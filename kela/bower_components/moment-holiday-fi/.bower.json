@@ -33,6 +33,5 @@
   },
   "_source": "git://github.com/sktoiva/moment-holiday-fi.git",
   "_target": "~0.3.0",
-  "_originalSource": "moment-holiday-fi",
-  "_direct": true
+  "_originalSource": "moment-holiday-fi"
 }

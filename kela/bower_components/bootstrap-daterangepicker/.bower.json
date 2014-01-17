@@ -15,11 +15,11 @@
     "momentjs": "~2.1"
   },
   "homepage": "https://github.com/dangrossman/bootstrap-daterangepicker",
-  "_release": "aa2ca7f685",
+  "_release": "b1477e20fc",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "aa2ca7f6858e535556980abd7e565c9358ac3bd0"
+    "commit": "b1477e20fc1683b72ea66b2fb022cf9df203aece"
   },
   "_source": "git://github.com/dangrossman/bootstrap-daterangepicker.git",
   "_target": "*",

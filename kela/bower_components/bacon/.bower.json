@@ -11,6 +11,5 @@
   },
   "_source": "git://github.com/raimohanska/bacon.js.git",
   "_target": "~0.7.1",
-  "_originalSource": "bacon",
-  "_direct": true
+  "_originalSource": "bacon"
 }

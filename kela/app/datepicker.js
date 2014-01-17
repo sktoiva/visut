@@ -9,13 +9,6 @@ define(['jquery',
 
   var init = function(){
     moment.lang("FI");
-    console.log(moment("18.04.2014", "DD.MM.YYYY").holiday());
-    console.log(moment("19.04.2014", "DD.MM.YYYY").holiday());
-    console.log(moment("20.04.2014", "DD.MM.YYYY").holiday());
-    console.log(moment("21.04.2014", "DD.MM.YYYY").holiday());
-    console.log(moment("21.06.2014", "DD.MM.YYYY").holiday());
-    console.log(moment("01.11.2014", "DD.MM.YYYY").holiday());
-
     createDatepicker();
     attachStream();
   };
