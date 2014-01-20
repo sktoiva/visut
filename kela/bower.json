@@ -9,6 +9,9 @@
     "momentjs": "~2.5.0",
     "bootstrap-daterangepicker": "*",
     "bacon": "~0.7.1",
-    "moment-holiday-fi": "~0.3.0"
+    "moment-holiday-fi": "~0.4.0"
+  },
+  "resolutions": {
+    "moment-holiday-fi": "~0.4.0"
   }
 }

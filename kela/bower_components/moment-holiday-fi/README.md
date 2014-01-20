@@ -2,7 +2,7 @@
 
 A momentjs plugin for displaying Finnish holidays.
 
-Needs momentjs: 
+Needs momentjs: http://momentjs.com/
 
 ##Usage:
 

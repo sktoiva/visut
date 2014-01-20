@@ -14,10 +14,18 @@
 //  Copyright (c) 2014 [Sampo Toiva] under [MIT License](http://opensource.org/licenses/MIT)
 //
 // Inspired by: https://gist.github.com/jrhames/5200024
-(function() {
-    var moment;
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['moment'], factory); // AMD
+    } else if (typeof exports === 'object') {
+        module.exports = factory(require('moment')); // Node
+    } else {
+        factory(window.moment); // Browser global
+    }
+}(function (moment) {
+    // var moment;
  
-    moment = typeof require !== "undefined" && require !== null ? require("moment") : this.moment;
+    // moment = typeof require !== "undefined" && require !== null ? require("moment") : this.moment;
 
     //Static variables
     var saturday = 6, 
@@ -119,8 +127,5 @@
                allSaintsDay(this);
     };
  
-    if ((typeof module !== "undefined" && module !== null ? module.exports : void 0) != null) {
-        module.exports = moment;
-    }
- 
-}(this));
+    return moment;
+}));
