@@ -20,7 +20,7 @@
     }
   ],
   "devDependencies": {
-    "grunt": "~0.4.1",
+    "grunt": "~0.4.2",
     "grunt-contrib-qunit": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-concat": "*",
