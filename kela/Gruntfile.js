@@ -34,9 +34,6 @@ module.exports = function(grunt) {
         dest: 'dist/require.min.js'
       },
     },
-    qunit: {
-      files: ['test/**/*.html']
-    },
     jshint: {
       gruntfile: {
         options: {
@@ -69,7 +66,7 @@ module.exports = function(grunt) {
       },
       test: {
         files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test', 'qunit']
+        tasks: ['jshint:test']
       },
       livereload: {
         files: ['<%= jshint.app.src %>', 'index.htm', '*.css'],
@@ -132,7 +129,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
@@ -140,7 +136,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-html-validation');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'requirejs', 'concat', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'clean', 'requirejs', 'concat', 'uglify']);
   grunt.registerTask('preview-and-watch', ['connect:development', 'watch']);
   grunt.registerTask('preview-live', ['default', 'connect:production']);
 
