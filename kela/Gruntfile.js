@@ -66,10 +66,10 @@ module.exports = function(grunt) {
       },
       test: {
         files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test']
+        tasks: ['jshint:test'],
       },
       livereload: {
-        files: ['<%= jshint.app.src %>', 'index.htm', '*.css'],
+        files: ['<%= jshint.app.src %>', '<%= jshint.test.src %>', 'index.htm', '*.css'],
         options: {
           livereload: true
         }
