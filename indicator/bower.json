@@ -1,0 +1,9 @@
+{
+  "name": "indicator",
+  "dependencies": {
+    "requirejs": "~2.1.5",
+    "jquery": "~2.0.3",
+    "bootstrap": "~3.0.3",
+    "d3": "~3.4.1"
+  }
+}
