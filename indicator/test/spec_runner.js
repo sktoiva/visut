@@ -17,7 +17,7 @@ require(['require', 'chai', 'mocha'], function(require, chai){
   mocha.setup('bdd');
  
   require([
-    'specs/leaves.js',
+    'specs/indicator.js',
   ], function(require) {
     mocha.run();
   });
