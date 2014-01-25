@@ -4,6 +4,9 @@ require.config({
     "d3": {
       exports: "d3"
     },
+    "underscore": {
+      exports: "_"
+    },
     "bootstrap": {
       exports: "bootstrap",
       deps: ["jquery"]
@@ -14,7 +17,8 @@ require.config({
   paths: {
     "components": "../bower_components",
     "jquery": "../bower_components/jquery/jquery",
-    "d3": "../bower_components/d3.min.js",
+    "d3": "../bower_components/d3/d3.min",
+    "underscore": "../bower_components/underscore/underscore-min",
     "bootstrap": "../bower_components/bootstrap/dist/js/bootstrap.min"
   }
 });
