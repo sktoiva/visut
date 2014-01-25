@@ -1,4 +1,7 @@
 [
-  {"type": "Tieliikenneonnettomuus Suomessa", "deathToll": 258, "participants": 5449657},
-  {"type": "Liikennekoneiden lento-onnettomuus maailmassa", "deathToll": 265, "participants": 3000000000}
+  {"type": "Tieliikenneonnettomuus Suomessa 2013", "deathToll": 258, "participants": 5449657},
+  {"type": "Liikennekoneiden lento-onnettomuus maailmassa 2013", "deathToll": 265, "participants": 3000000000},
+  {"type": "Vuorikiipeily vuosittain", "deathToll": 1, "participants": 15700},
+  {"type": "Haastava Vuorikiipeily vuosittain", "deathToll": 0.0145, "participants": 100},
+  {"type": "Yli 6000 m kiipeäminen Nepalissa vuosittain", "deathToll": 10, "participants": 100}
 ]
