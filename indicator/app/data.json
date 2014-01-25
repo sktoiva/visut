@@ -3,5 +3,6 @@
   {"type": "Liikennekoneiden lento-onnettomuus maailmassa 2013", "deathToll": 265, "participants": 3000000000},
   {"type": "Vuorikiipeily vuosittain", "deathToll": 1, "participants": 15700},
   {"type": "Haastava Vuorikiipeily vuosittain", "deathToll": 0.0145, "participants": 100},
-  {"type": "Yli 6000 m kiipeäminen Nepalissa vuosittain", "deathToll": 10, "participants": 100}
+  {"type": "Yli 6000 m kiipeäminen Nepalissa vuosittain", "deathToll": 10, "participants": 100},
+  {"type": "Tupakointi Suomessa", "deathToll": 5000, "participants": 1000000}  
 ]
