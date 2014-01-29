@@ -50,7 +50,5 @@ define(["lodash", "d3", "topojson"], function(_, d3, topojson){
     d3.select(self.frameElement).style("height", height + "px");
   };
   
-  return function(){
-    createMap();
-  };
+  return createMap;
 });

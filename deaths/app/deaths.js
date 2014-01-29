@@ -31,7 +31,5 @@ define(["d3", "lodash"], function(d3, _){
     return entries.death_rate * entries.population/1000;
   };
 
-  return function() { 
-    parseData();
-  };
+  return parseData;
 });
