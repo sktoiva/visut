@@ -1,0 +1,9 @@
+.land {
+  fill: #ccc;
+}
+
+.boundary {
+  fill: none;
+  stroke: #000;
+  stroke-width: .5px;
+}
