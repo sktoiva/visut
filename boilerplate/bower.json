@@ -1,0 +1,24 @@
+{
+  "name": "deaths",
+  "version": "0.0.0",
+  "homepage": "https://github.com/sktoiva/visut",
+  "authors": [
+    "Sampo Toiva <sampo.toiva@gmail.com>"
+  ],
+  "description": "Death visualization",
+  "main": "index.htm",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.10",
+    "d3": "~3.4.1",
+    "bootstrap": "~3.0.3"
+  }
+}
