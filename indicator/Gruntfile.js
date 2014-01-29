@@ -122,7 +122,7 @@ module.exports = function(grunt) {
       files: {
         src: ['index.htm']
       }
-    },
+    }
   });
 
   // These plugins provide necessary tasks.
