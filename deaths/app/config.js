@@ -16,7 +16,8 @@ require.config({
     bootstrap: "../bower_components/bootstrap/dist/js/bootstrap",
     topojson: "../bower_components/topojson/topojson",
     underscore: "../bower_components/underscore/underscore",
-    lodash: "../bower_components/lodash/dist/lodash.compat"
+    lodash: "../bower_components/lodash/dist/lodash.compat",
+    bacon: "../bower_components/bacon/dist/Bacon"
   }
 });
 
