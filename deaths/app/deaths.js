@@ -1,4 +1,4 @@
-define(["d3", "lodash"], function(d3, _){
+define(["d3", "lodash", "bacon"], function(d3, _, Bacon){
 
   var parseData = function(){
     d3.csv("app/assets/data/data.csv", function(err, data){
@@ -31,5 +31,14 @@ define(["d3", "lodash"], function(d3, _){
     return entries.death_rate * entries.population/1000;
   };
 
-  return parseData;
+  var communicable = function(){ return new Bacon.Next("communicable"); };
+  var nonCommunicable = function(){ return new Bacon.Next("non communicable"); };
+  var injuries = function(){ return new Bacon.Next("injuries"); };
+
+  return {
+    parseData: parseData,
+    communicable: communicable,
+    nonCommunicable: nonCommunicable,
+    injuries: injuries
+  };
 });
