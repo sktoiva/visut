@@ -10,9 +10,10 @@ define(["bacon",
 
   var streams = {"Non-communicable": nonCommunicable, "Communicable": communicable, "Injuries": injuries};
 
-  var tick = Bacon.interval(1000, 1);
   var init = function(err, data){
-    var parsed = dataHandler.parseData(err, data);
+    var tick = Bacon.interval(1000, 1),
+        parsed = dataHandler.parseData(err, data);
+
     _.each(parsed, function(entries, code){
       var country = new Country(code, entries, communicable, nonCommunicable, injuries);
       tick.onValue(function(){
@@ -25,9 +26,12 @@ define(["bacon",
     return sum + num;
   };
 
-  dataHandler.loadData("app/assets/data/data.csv", init);
+  //Load data, start execution and draw the map
   map();
+  dataHandler.loadData("app/assets/data/data.csv", init);
 
+
+  //Calculate death totals and print
   _.each(streams, function(stream, name){
     stream.map(1).scan(0, sum).onValue(function(d){ console.log(name + ": " +  d); });
   });
