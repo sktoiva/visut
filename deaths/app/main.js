@@ -4,26 +4,26 @@ define(["bacon",
         "map",
         "Country"], function(Bacon, _, dataHandler, map, Country){
 
-  var nonCommunicable = new Bacon.Bus(),
-      communicable = new Bacon.Bus(),
-      injuries = new Bacon.Bus();
-
-  var streams = {"Non-communicable": nonCommunicable, "Communicable": communicable, "Injuries": injuries};
-
-  var init = function(err, data){
-    var tick = Bacon.interval(1000, 1),
-        parsed = dataHandler.parseData(err, data);
-
-    _.each(parsed, function(entries, code){
-      var country = new Country(code, entries, communicable, nonCommunicable, injuries);
-      tick.onValue(function(){
-        country.death(); // Why this needs to be inside an anonymous function???
-      });
-    }); 
-  };
+  var interval = 1000;  //milliseconds
 
   var sum = function(sum, num){
     return sum + num;
+  };
+
+  var init = function(err, data){
+    var parsed = dataHandler.parseData(err, data);
+    var streams = _.map(parsed, function(entries, code){
+      var stream = new Bacon.Bus();
+      new Country(code, entries, interval, stream);
+      return stream;
+    });
+
+    var combined = _.reduce(streams, function(acc, curr){ 
+      return acc.merge(curr);
+    }, new Bacon.Bus());
+    
+    combined.log();
+    combined.map(1).scan(0, sum).log();
   };
 
   //Load data, start execution and draw the map
@@ -32,11 +32,12 @@ define(["bacon",
 
 
   //Calculate death totals and print
-  _.each(streams, function(stream, name){
-    stream.map(1).scan(0, sum).onValue(function(d){ console.log(name + ": " +  d); });
-  });
+  // _.each(streams, function(stream, name){
+  //   stream.map(1).scan(0, sum).onValue(function(d){ console.log(name + ": " +  d); });
+  // });
 
-  nonCommunicable.merge(communicable).merge(injuries).map(1).scan(0, sum)
-  .onValue(function(d){ console.log("Total deaths: " + d); });
-  
+  // nonCommunicable.merge(communicable).merge(injuries).map(1).scan(0, sum)
+  // .onValue(function(d){ console.log("Total deaths: " + d); });
+
+
 });

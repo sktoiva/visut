@@ -1,21 +1,23 @@
 define('Country', [], function(){
 
-  function Country(code, data, communicableStream, nonCommunicableStream, injuriesStream){    
+  function Country(code, data, interval, stream){    
     this.country = code;
     this.communicable = data.cause_communicable/100;
     this.nonCommunicable = data.cause_non_communicable/100;
     this.injuries = data.cause_injury/100;
     this.deathRate = data.death_rate;
     this.population = data.population;
-    this.communicableStream = communicableStream;
-    this.nonCommunicableStream = nonCommunicableStream;
-    this.injuriesStream = injuriesStream;
+    this.interval = interval;
+    this.stream = stream;
 
-    var secondsInYear = 365 * 24 * 60 * 60,
-        lambda = (this.deathRate * this.population/1000)/secondsInYear,
+    var timeSpan = 365 * 24 * 60 * 60; //days * hours * minutes * seconds
+ 
+    var lambda = (this.deathRate * this.population/1000)/timeSpan,
         k = 1;
 
     this.deathProbabilityInSecond = this._poissonDistribution(lambda, k);
+
+    setInterval(this.death.bind(this), this.interval);
   }
 
   Country.prototype._factorial = function(n){
@@ -27,16 +29,21 @@ define('Country', [], function(){
   };
 
   Country.prototype.death = function(){
-    var rand = Math.random();
+    var rand = Math.random(),
+        type;
+
     if(rand < this.deathProbabilityInSecond){
       rand = Math.random();
       if(rand < this.communicable){
-        this.communicableStream.push(this.country);
+        type = "communicable";
       }else if(rand > this.communicable && rand < this.nonCommunicable + this.communicable){
-        this.nonCommunicableStream.push(this.country);
+        type = "nonCommunicable";
       }else{
-        this.injuriesStream.push(this.country);
+        type = "injury";
       }
+      var retVal = {};
+      retVal[this.country] = type;
+      this.stream.push(retVal);
     }
   };
 
